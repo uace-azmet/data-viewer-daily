@@ -103,6 +103,8 @@ sidebar <-
           )
         ),
 
+        htmltools::br(),
+        
         reactable::reactableOutput(outputId = "stationGroupsTable")
       ) # bslib::accordion_panel()
     ), # bslib::accordion()
