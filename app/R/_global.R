@@ -1,13 +1,13 @@
 # Libraries --------------------
 
-# library(azmetr)
+library(azmetr)
 library(bslib)
 library(bsicons)
-# library(dplyr)
+library(dplyr)
 # library(english)
 library(htmltools)
 library(lubridate)
-# library(plotly)
+library(plotly)
 library(reactable)
 # library(reshape2)
 library(shiny)

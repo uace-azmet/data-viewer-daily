@@ -16,7 +16,7 @@ ui <-
 
       sidebar = sidebar, # `scr##_sidebar.R`
 
-      # navsetCardTab, # `scr##_navsetCardTab.R`
+      navsetCardTab, # `scr##_navsetCardTab.R`
 
       # shiny::htmlOutput(outputId = "figureHelpText"),
       # shiny::htmlOutput(outputId = "figureFooter"),

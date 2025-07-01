@@ -63,50 +63,50 @@ sidebar <-
           inputId = "retrieveData",
           label = "RETRIEVE DATA",
           class = "btn btn-block btn-blue"
-        ),
+        )#,
 
-        htmltools::br()
-      ),
+        #htmltools::br()
+      )#,
 
-      bslib::accordion_panel(
-        title = "DATA DISPLAY",
-        value = "dataDisplay",
-        icon = bsicons::bs_icon("sliders"),
-
-        shiny::helpText(
-          shiny::em(
-            "Specify a station group to highlight and variable to show in the graph."
-          )
-        ),
-
-        htmltools::br(),
-
-        shiny::selectInput(
-          inputId = "azmetStationGroup",
-          label = "AZMet Station Group",
-          choices = NULL, # see `app.R`, shiny::updateSelectInput(inputId = "azmetStationGroup")
-          selected = NULL # see `app.R`, shiny::updateSelectInput(inputId = "azmetStationGroup")
-        ),
-
-        shiny::selectInput(
-          inputId = "stationVariable",
-          label = "Station Variable",
-          choices = NULL, # see `app.R`, shiny::updateSelectInput(inputId = "stationVariable")
-          selected = NULL # see `app.R`, shiny::updateSelectInput(inputId = "stationVariable")
-        ),
-
-        htmltools::br(),
-        htmltools::br(),
-
-        shiny::helpText(
-          shiny::em(
-            "We group stations by general proximity, as listed below. Scroll or swipe over the table to view additional columns."
-          )
-        ),
-
-        htmltools::br(),
-        
-        reactable::reactableOutput(outputId = "stationGroupsTable")
-      ) # bslib::accordion_panel()
+      # bslib::accordion_panel(
+      #   title = "DATA DISPLAY",
+      #   value = "dataDisplay",
+      #   icon = bsicons::bs_icon("sliders"),
+      # 
+      #   shiny::helpText(
+      #     shiny::em(
+      #       "Specify a station group to highlight and variable to show in the graph."
+      #     )
+      #   ),
+      # 
+      #   htmltools::br(),
+      # 
+      #   shiny::selectInput(
+      #     inputId = "azmetStationGroup",
+      #     label = "AZMet Station Group",
+      #     choices = NULL, # see `app.R`, shiny::updateSelectInput(inputId = "azmetStationGroup")
+      #     selected = NULL # see `app.R`, shiny::updateSelectInput(inputId = "azmetStationGroup")
+      #   ),
+      # 
+      #   shiny::selectInput(
+      #     inputId = "stationVariable",
+      #     label = "Station Variable",
+      #     choices = NULL, # see `app.R`, shiny::updateSelectInput(inputId = "stationVariable")
+      #     selected = NULL # see `app.R`, shiny::updateSelectInput(inputId = "stationVariable")
+      #   ),
+      # 
+      #   htmltools::br(),
+      #   htmltools::br(),
+      # 
+      #   shiny::helpText(
+      #     shiny::em(
+      #       "We group stations by general proximity, as listed below. Scroll or swipe over the table to view additional columns."
+      #     )
+      #   ),
+      # 
+      #   htmltools::br(),
+      #   
+      #   reactable::reactableOutput(outputId = "stationGroupsTable")
+      # ) # bslib::accordion_panel()
     ), # bslib::accordion()
   ) # bslib::sidebar()
