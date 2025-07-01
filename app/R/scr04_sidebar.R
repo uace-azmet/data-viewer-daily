@@ -14,16 +14,29 @@ sidebar <-
 
     bslib::accordion(
       id = "accordion",
-      open = "DATE SELECTION",
-      multiple = TRUE,
+      #open = "DATE SELECTION",
+      #multiple = TRUE,
       class = NULL,
       width = "auto",
       height = "auto",
+      
+      htmltools::p(
+        htmltools::HTML(
+          paste0(
+            bsicons::bs_icon("calendar-event"), 
+            htmltools::HTML("&nbsp;"),
+            htmltools::HTML("&nbsp;"),
+            toupper("DATE SELECTION")
+          ),
+        ),
+        
+        class = "sls-graph-title"
+      ),
 
-      bslib::accordion_panel(
-        title = "DATE SELECTION",
-        value = "dateSelection",
-        icon = bsicons::bs_icon("calendar-event"),
+      #bslib::accordion_panel(
+        #title = "DATE SELECTION",
+        #value = "dateSelection",
+        #icon = bsicons::bs_icon("calendar-event"),
 
         shiny::helpText(shiny::em(
           "Set start and end dates of the period of interest. Then, click or tap 'RETRIEVE DATA'."
@@ -66,7 +79,7 @@ sidebar <-
         )#,
 
         #htmltools::br()
-      )#,
+      #)#,
 
       # bslib::accordion_panel(
       #   title = "DATA DISPLAY",
