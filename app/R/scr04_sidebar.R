@@ -96,6 +96,7 @@ sidebar <-
         ),
 
         htmltools::br(),
+        htmltools::br(),
 
         shiny::helpText(
           shiny::em(
