@@ -11,6 +11,7 @@ library(plotly)
 library(reactable)
 # library(reshape2)
 library(shiny)
+library(shinyjs)
 library(vroom)
 library(tibble)
 

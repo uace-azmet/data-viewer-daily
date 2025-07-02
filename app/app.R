@@ -11,21 +11,17 @@ ui <-
   htmltools::htmlTemplate(
     "azmet-shiny-template.html",
     
-    pageSidebar = bslib::page_sidebar(
+    pageDataViewerDaily = bslib::page(
       title = NULL,
-
-      sidebar = sidebar, # `scr##_sidebar.R`
-
-      navsetCardTab, # `scr##_navsetCardTab.R`
-
-      # shiny::htmlOutput(outputId = "figureHelpText"),
-      # shiny::htmlOutput(outputId = "figureFooter"),
-
-      fillable = TRUE,
-      fillable_mobile = FALSE,
       theme = theme, # `scr##_theme.R`
-      lang = NULL,
-      window_title = NA
+      #lang = "en",
+      
+      bslib::layout_sidebar(
+        sidebar = pageSidebar, # `scr##_slsSidebar.R`
+        navsetCardTab
+      ),
+      
+      shiny::htmlOutput(outputId = "pageBottomText") # Common, regardless of card tab
     )
   )
 
@@ -33,8 +29,21 @@ ui <-
 # Server --------------------
 
 server <- function(input, output, session) {
+  shinyjs::useShinyjs(html = TRUE)
+  shinyjs::hideElement("pageBottomText")
+  
   
   # Observables -----
+  
+  shiny::observeEvent(input$retrieveData, {
+    if (input$startDate > input$endDate) {
+      shiny::showModal(datepickerErrorModal) # `scr06_datepickerErrorModal.R`
+    }
+  })
+  
+  shiny::observeEvent(dataETL(), {
+    shinyjs::showElement("pageBottomText")
+  })
   
   shiny::updateSelectInput(
     inputId = "azmetStationGroup",
@@ -67,7 +76,55 @@ server <- function(input, output, session) {
   
   # Reactives -----
   
+  dataETL <- shiny::eventReactive(input$retreiveData, {
+    # shiny::validate(
+    #   shiny::need(
+    #     expr = input$startDate <= input$endDate, 
+    #     message = FALSE
+    #   )
+    # )
+    # 
+    # idPreview <- shiny::showNotification(
+    #   ui = "Preparing data preview . . .", 
+    #   action = NULL, 
+    #   duration = NULL, 
+    #   closeButton = FALSE,
+    #   id = "idPreview",
+    #   type = "message"
+    # )
+    # 
+    # on.exit(shiny::removeNotification(id = idPreview), add = TRUE)
+    
+    fxn_dataETL(
+      azmetStation = NULL, 
+      timeStep = "Daily", 
+      startDate = input$startDate, 
+      endDate = input$endDate
+    )
+  })
+  
+  
   # Outputs -----
+  
+  output$pageBottomText <- shiny::renderUI({
+    #shiny::req(dataETL())
+    fxn_pageBottomText()
+  })
+  
+  output$timeseriesGraphFooter <- shiny::renderUI({
+    #shiny::req(dataETL()) - NEED THIS LATER
+    fxn_timeseriesGraphFooter()
+  })
+  
+  output$timeseriesGraphHelpText <- shiny::renderUI({
+    #shiny::req(dataETL()) - NEED THIS LATER
+    fxn_timeseriesGraphHelpText()
+  })
+  
+  output$timeseriesGraphTitle <- shiny::renderUI({
+    #shiny::req(dataETL()) - NEED THIS LATER
+    fxn_timeseriesGraphTitle()
+  })
   
   output$stationGroupsTable <- reactable::renderReactable({
     stationGroupsTable

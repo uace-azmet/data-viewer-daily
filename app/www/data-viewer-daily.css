@@ -14,6 +14,13 @@
     content: attr(data-title);
 }
 
+.accordion {
+  padding-bottom: 24px !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+  padding-top: 0px !important;
+}
+
 /*.accordion-button {
   padding-left: 24px !important;
   padding-right: 24px !important;
@@ -24,15 +31,16 @@
   fill: #989898 !important;
 }
 
-/*.bslib-sidebar-layout.bslib-mb-spacing.html-fill-item {
+.bslib-sidebar-layout.bslib-mb-spacing.html-fill-item {
+  border-width: 0px !important;
   margin-bottom: 0px !important;
-}*/
+}
 
 .btn {
   background-color: #FFFFFF; 
   border-color: #001C48; 
   color: #001C48;
-  margin-top: 8px !important;
+  margin-top: 48px !important;
 }
 
 .btn:active {
@@ -133,12 +141,12 @@
   box-shadow: 0 0 0 0.1rem #0000001A;
 }
 
-/*.help-block {
+.help-block {
   color: #989898 !important;
-  font-size: 1rem;
-  margin-bottom: -8px !important;
-  margin-top: -12px !important;
-}*/
+  font-size: 0.95rem;
+  /*padding-bottom: 48px !important;
+  margin-top: -12px !important;*/
+}
 
 /*.main {
   padding-top: 20px !important;
@@ -176,9 +184,9 @@
   margin-top: 0px !important;
 }
 
-/*.modebar-container {
+.modebar-container {
   top: -8px !important;
-}*/
+}
 
 .month:hover {
   background-color: rgb(226, 233, 235) !important;
@@ -250,7 +258,7 @@
   border-radius: 0px;
 }
 
-/*.shiny-notification {
+.shiny-notification {
   background-color: rgba(30,82,136,0.8) !important; 
   border-radius: var(--bs-border-radius) !important;
   box-shadow: 0px 1px 2px rgba(var(--bslib-box-shadow-color-rgb)) !important;
@@ -261,19 +269,27 @@
   left: calc(50% - 150px) !important;
   position: fixed !important; 
   top: calc(50%) !important; 
-}*/
+}
 
-/*.sidebar-content.bslib-gap-spacing {
-  padding-bottom: 24px !important;
-  padding-left: 24px !important;
-  padding-right: 24px !important;
-  padding-top: 48px !important;
-}*/
-
-/*.table-condensed {
+.table-condensed {
   background-color: #FFFFFF; 
   color: var(--bs-body-color);
-}*/
+}
+
+.timeseries-graph-footer {
+  color: #606060; 
+  font-size: 0.85rem;
+  font-style: normal;
+  /*margin-top: 0.25rem;*/
+}
+
+.timeseries-graph-help-text {
+  color: #989898 !important;
+  font-size: 0.95rem;
+  font-style: italic;
+  font-weight: normal;
+  padding-top: 0px;
+}
 
 .year:hover {
   background-color: rgb(226, 233, 235) !important;
@@ -316,4 +332,8 @@
   color: #989898 !important;
   font-size: 1rem;
   text-align: left;
+}
+
+#startDate {
+  margin-top: 32px;
 }
