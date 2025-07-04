@@ -5,13 +5,14 @@ navsetCardTab <- bslib::navset_card_tab(
   sidebar = NULL,
   header = NULL,
   footer = NULL,
-  height = 600,
+  height = 700,
   full_screen = TRUE,
   #wrapper = card_body,
   
   bslib::nav_panel(
     title = "Reporting",
     value = "reporting"#,
+    #tableOutput("table")
     #plotly::plotlyOutput("scatterplot")
   ),
   
@@ -24,7 +25,7 @@ navsetCardTab <- bslib::navset_card_tab(
       
       shiny::htmlOutput(outputId = "timeseriesGraphTitle"),
       shiny::htmlOutput(outputId = "timeseriesGraphHelpText"),
-      #plotly::plotlyOutput("timeSeries")
+      plotly::plotlyOutput("timeseriesGraph"),
       shiny::htmlOutput(outputId = "timeseriesGraphFooter")
     )
   ),

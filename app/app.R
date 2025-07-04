@@ -30,75 +30,58 @@ ui <-
 
 server <- function(input, output, session) {
   shinyjs::useShinyjs(html = TRUE)
+  shinyjs::hideElement("timeseriesAccordion")
   shinyjs::hideElement("pageBottomText")
   
   
   # Observables -----
   
-  shiny::observeEvent(input$retrieveData, {
+  shiny::observeEvent(input$retrieveDailyData, {
     if (input$startDate > input$endDate) {
       shiny::showModal(datepickerErrorModal) # `scr06_datepickerErrorModal.R`
     }
   })
   
-  shiny::observeEvent(dataETL(), {
+  shiny::observeEvent(dailyData(), {
+    shinyjs::showElement("timeseriesAccordion")
     shinyjs::showElement("pageBottomText")
+    
+    shiny::updateSelectInput(
+      inputId = "stationGroup",
+      label = "Station Group",
+      choices = sort(unique(dailyData()$meta_station_group)),
+      selected = sort(unique(dailyData()$meta_station_group))[1]
+    )
+    
+    shiny::updateSelectInput(
+      inputId = "stationVariable",
+      label = "Station Variable",
+      choices = c(dailyVarsMeasured, dailyVarsDerived),
+      selected = c(dailyVarsMeasured, dailyVarsDerived)[1]
+    )
   })
-  
-  shiny::updateSelectInput(
-    inputId = "azmetStationGroup",
-    label = "AZMet Station Group",
-    choices = c("Apples", "Bananas", "Carrots"), #sort(unique(dataETL()$meta_station_group)),
-    selected = "Carrots" #sort(unique(dataETL()$meta_station_group))[1]
-  )
-  
-  shiny::updateSelectInput(
-    inputId = "stationVariable",
-    label = "Station Variable",
-    choices = c("Apples", "Bananas", "Carrots"),
-      # sort(
-      #   colnames(
-      #     dplyr::select(
-      #       dataETL(), !c(datetime, meta_station_group, meta_station_name)
-      #     )
-      #   )
-      # ),
-    selected = "Bananas"
-      # sort(
-      #   colnames(
-      #     dplyr::select(
-      #       dataETL(), !c(datetime, meta_station_group, meta_station_name)
-      #     )
-      #   )
-      # )[1]
-  )
   
   
   # Reactives -----
   
-  dataETL <- shiny::eventReactive(input$retreiveData, {
-    # shiny::validate(
-    #   shiny::need(
-    #     expr = input$startDate <= input$endDate, 
-    #     message = FALSE
-    #   )
-    # )
-    # 
-    # idPreview <- shiny::showNotification(
-    #   ui = "Preparing data preview . . .", 
-    #   action = NULL, 
-    #   duration = NULL, 
-    #   closeButton = FALSE,
-    #   id = "idPreview",
-    #   type = "message"
-    # )
-    # 
-    # on.exit(shiny::removeNotification(id = idPreview), add = TRUE)
+  dailyData <- shiny::eventReactive(input$retrieveDailyData, {
+    idRetrievingDailyData <- shiny::showNotification(
+      ui = "Retrieving daily data . . .",
+      action = NULL,
+      duration = NULL,
+      closeButton = FALSE,
+      id = "idRetrievingDailyData",
+      type = "message"
+    )
     
-    fxn_dataETL(
-      azmetStation = NULL, 
-      timeStep = "Daily", 
-      startDate = input$startDate, 
+    on.exit(
+      shiny::removeNotification(id = idRetrievingDailyData), 
+      add = TRUE
+    )
+    
+    fxn_dailyData(
+      azmetStation = NULL,
+      startDate = input$startDate,
       endDate = input$endDate
     )
   })
@@ -106,24 +89,39 @@ server <- function(input, output, session) {
   
   # Outputs -----
   
+  output$table <- renderTable({
+    dailyData()
+  })
+  
   output$pageBottomText <- shiny::renderUI({
-    #shiny::req(dataETL())
+    #shiny::req(dailyData())
     fxn_pageBottomText()
   })
   
+  output$timeseriesGraph <- plotly::renderPlotly({
+    fxn_timeseriesGraph(
+      inData = dailyData(),
+      stationGroup = input$stationGroup,
+      stationVariable = input$stationVariable
+    )
+  })
+  
   output$timeseriesGraphFooter <- shiny::renderUI({
-    #shiny::req(dataETL()) - NEED THIS LATER
+    shiny::req(dailyData())
     fxn_timeseriesGraphFooter()
   })
   
   output$timeseriesGraphHelpText <- shiny::renderUI({
-    #shiny::req(dataETL()) - NEED THIS LATER
+    shiny::req(dailyData())
     fxn_timeseriesGraphHelpText()
   })
   
   output$timeseriesGraphTitle <- shiny::renderUI({
-    #shiny::req(dataETL()) - NEED THIS LATER
-    fxn_timeseriesGraphTitle()
+    shiny::req(dailyData())
+    fxn_timeseriesGraphTitle(
+      startDate = input$startDate,
+      endDate = input$endDate
+    )
   })
   
   output$stationGroupsTable <- reactable::renderReactable({

@@ -13,7 +13,7 @@ pageSidebar <-
     padding = NULL,
 
     bslib::accordion(
-      id = "accordion",
+      id = "pageAccordion",
       #open = "DATE SELECTION",
       #multiple = TRUE,
       class = NULL,
@@ -65,9 +65,10 @@ pageSidebar <-
         autoclose = TRUE
       ),
       
+      #selectInput("dataset", label = "Dataset", choices = ls("package:datasets")),
       shiny::actionButton(
-        inputId = "retrieveData",
-        label = "RETRIEVE DATA",
+        inputId = "retrieveDailyData",
+        label = "RETRIEVE DAILY DATA",
         class = "btn btn-block btn-blue"
       )
     ) # bslib::accordion()

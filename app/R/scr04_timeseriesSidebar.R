@@ -13,7 +13,7 @@ timeseriesSidebar <-
     padding = NULL,
 
     bslib::accordion(
-      id = "accordion",
+      id = "timeseriesAccordion",
       #open = "DATE SELECTION",
       #multiple = TRUE,
       class = NULL,
@@ -35,10 +35,10 @@ timeseriesSidebar <-
       ),
       
       shiny::selectInput(
-        inputId = "azmetStationGroup", 
-        label = "AZMet Station Group",
-        choices = NULL, # see `app.R`, shiny::updateSelectInput(inputId = "azmetStationGroup")
-        selected = NULL # see `app.R`, shiny::updateSelectInput(inputId = "azmetStationGroup")
+        inputId = "stationGroup", 
+        label = "Station Group",
+        choices = NULL, # see `app.R`, shiny::updateSelectInput(inputId = "stationGroup")
+        selected = NULL # see `app.R`, shiny::updateSelectInput(inputId = "stationGroup")
       ),
       
       shiny::selectInput(
