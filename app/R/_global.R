@@ -24,20 +24,21 @@ library(tibble)
 # Scripts. Loaded automatically at app start if in `R` folder
 #source("./R/scr_scriptName.R", local = TRUE)
 
-azmetStationMetadata <- 
-  vroom::vroom(
-    file = "aux-files/azmet-station-metadata.csv", 
-    delim = ",", 
-    col_names = TRUE, 
-    show_col_types = FALSE
-  )
+# azmetStationMetadata <- 
+#   vroom::vroom(
+#     file = "aux-files/azmet-station-metadata.csv", 
+#     delim = ",", 
+#     col_names = TRUE, 
+#     show_col_types = FALSE
+#   )
 
 
 # Variables --------------------
 
 apiStartDate <- as.Date("2021-01-01")
 
-azmetStationMetadata <- azmetStationMetadata |>
+azmetStationMetadata <- azmetr::station_info |>
+  dplyr::mutate(end_date = NA) |> # Placeholder until inactive stations are in API and `azmetr`
   dplyr::mutate(
     end_date = dplyr::if_else(
       status == "active",
