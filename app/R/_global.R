@@ -24,6 +24,8 @@ library(tibble)
 # Scripts. Loaded automatically at app start if in `R` folder
 #source("./R/scr_scriptName.R", local = TRUE)
 
+shiny::addResourcePath("shinyjs", system.file("srcjs", package = "shinyjs"))
+
 # azmetStationMetadata <- 
 #   vroom::vroom(
 #     file = "aux-files/azmet-station-metadata.csv", 
