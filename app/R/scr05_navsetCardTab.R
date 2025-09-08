@@ -24,7 +24,6 @@ navsetCardTab <- bslib::navset_card_tab(
       sidebar = timeseriesSidebar, # `scr##_timeseriesSidebar.R`
       
       shiny::htmlOutput(outputId = "timeseriesGraphTitle"),
-      shiny::htmlOutput(outputId = "timeseriesGraphHelpText"),
       plotly::plotlyOutput("timeseriesGraph"),
       shiny::htmlOutput(outputId = "timeseriesGraphFooter")
     )

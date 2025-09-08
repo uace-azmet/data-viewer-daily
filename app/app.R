@@ -30,7 +30,6 @@ ui <-
 
 server <- function(input, output, session) {
   shinyjs::useShinyjs(html = TRUE)
-  shinyjs::hideElement("timeseriesAccordion")
   shinyjs::hideElement("pageBottomText")
   
   
@@ -43,7 +42,6 @@ server <- function(input, output, session) {
   })
   
   shiny::observeEvent(dailyData(), {
-    shinyjs::showElement("timeseriesAccordion")
     shinyjs::showElement("pageBottomText")
     
     shiny::updateSelectInput(
@@ -109,11 +107,6 @@ server <- function(input, output, session) {
   output$timeseriesGraphFooter <- shiny::renderUI({
     shiny::req(dailyData())
     fxn_timeseriesGraphFooter()
-  })
-  
-  output$timeseriesGraphHelpText <- shiny::renderUI({
-    shiny::req(dailyData())
-    fxn_timeseriesGraphHelpText()
   })
   
   output$timeseriesGraphTitle <- shiny::renderUI({

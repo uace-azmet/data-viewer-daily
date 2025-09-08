@@ -25,13 +25,16 @@ timeseriesSidebar <-
       htmltools::p(
         bsicons::bs_icon("sliders"), 
         htmltools::HTML("&nbsp;"), 
-        "DATA DISPLAY"
-      ),
-      
-      shiny::helpText(
-        shiny::em(
-          "Specify a station group to highlight and variable to show in the graph."
-        )
+        "DATA DISPLAY",
+        htmltools::HTML("&nbsp;&nbsp;&nbsp;&nbsp;"),
+        bslib::tooltip(
+          bsicons::bs_icon("info-circle"),
+          "Specify a station group to highlight and variable to show in the graph.",
+          id = "infoDataDisplay",
+          placement = "right"
+        ),
+        
+        class = "data-display-title"
       ),
       
       shiny::selectInput(
@@ -48,11 +51,20 @@ timeseriesSidebar <-
         selected = NULL # see `app.R`, shiny::updateSelectInput(inputId = "stationVariable")
       ),
       
-      htmltools::br(),
-      
-      shiny::helpText(shiny::em(
-        "We group stations by general proximity, as listed below. Scroll or swipe over the table to view additional columns."
-      )),
+      htmltools::p(
+        bsicons::bs_icon("layers"), 
+        htmltools::HTML("&nbsp;"), 
+        "STATION GROUPS",
+        htmltools::HTML("&nbsp;&nbsp;&nbsp;&nbsp;"),
+        bslib::tooltip(
+          bsicons::bs_icon("info-circle"),
+          "Stations are grouped by general proximity, as listed below. Scroll or swipe over the table to view additional columns.",
+          id = "infoStationGroups",
+          placement = "right"
+        ),
+        
+        class = "station-groups-title"
+      ),
       
       reactable::reactableOutput(outputId = "stationGroupsTable")
     ) # bslib::accordion()
