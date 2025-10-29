@@ -15,6 +15,69 @@ fxn_dailyData <- function(azmetStation, startDate, endDate) {
     dplyr::select(all_of(c(dailyVarsID, dailyVarsMeasured, dailyVarsDerived))) %>%
     
     dplyr::mutate(
+      temp_soil_10cm_maxC = dplyr::if_else(
+        meta_station_name == "Test",
+        NA_real_,
+        temp_soil_10cm_maxC
+      ),
+      temp_soil_10cm_meanC = dplyr::if_else(
+        meta_station_name == "Test",
+        NA_real_,
+        temp_soil_10cm_meanC
+      ),
+      temp_soil_10cm_minC = dplyr::if_else(
+        meta_station_name == "Test",
+        NA_real_,
+        temp_soil_10cm_minC
+      ),
+      temp_soil_50cm_maxC = dplyr::if_else(
+        meta_station_name == "Test",
+        NA_real_,
+        temp_soil_50cm_maxC
+      ),
+      temp_soil_50cm_meanC = dplyr::if_else(
+        meta_station_name == "Test",
+        NA_real_,
+        temp_soil_50cm_meanC
+      ),
+      temp_soil_50cm_minC = dplyr::if_else(
+        meta_station_name == "Test",
+        NA_real_,
+        temp_soil_50cm_minC
+      ),
+      temp_soil_10cm_maxF = dplyr::if_else(
+        meta_station_name == "Test",
+        NA_real_,
+        temp_soil_10cm_maxF
+      ),
+      temp_soil_10cm_meanF = dplyr::if_else(
+        meta_station_name == "Test",
+        NA_real_,
+        temp_soil_10cm_meanF
+      ),
+      temp_soil_10cm_minF = dplyr::if_else(
+        meta_station_name == "Test",
+        NA_real_,
+        temp_soil_10cm_minF
+      ),
+      temp_soil_50cm_maxF = dplyr::if_else(
+        meta_station_name == "Test",
+        NA_real_,
+        temp_soil_50cm_maxF
+      ),
+      temp_soil_50cm_meanF = dplyr::if_else(
+        meta_station_name == "Test",
+        NA_real_,
+        temp_soil_50cm_meanF
+      ),
+      temp_soil_50cm_minF = dplyr::if_else(
+        meta_station_name == "Test",
+        NA_real_,
+        temp_soil_50cm_minF
+      )
+    ) |>
+    
+    dplyr::mutate(
       dplyr::across("wind_2min_timestamp", as.character)
     ) %>% 
     
