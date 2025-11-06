@@ -1,15 +1,14 @@
 # Libraries --------------------
 
+
 library(azmetr)
 library(bslib)
 library(bsicons)
 library(dplyr)
-# library(english)
 library(htmltools)
 library(lubridate)
 library(plotly)
 library(reactable)
-# library(reshape2)
 library(shiny)
 library(shinyjs)
 library(vroom)
@@ -17,6 +16,7 @@ library(tibble)
 
 
 # Files --------------------
+
 
 # Functions. Loaded automatically at app start if in `R` folder
 #source("./R/fxn_functionName.R", local = TRUE)
@@ -26,18 +26,9 @@ library(tibble)
 
 shiny::addResourcePath("shinyjs", system.file("srcjs", package = "shinyjs"))
 
-# azmetStationMetadata <- 
-#   vroom::vroom(
-#     file = "aux-files/azmet-station-metadata.csv", 
-#     delim = ",", 
-#     col_names = TRUE, 
-#     show_col_types = FALSE
-#   )
-
 
 # Variables --------------------
 
-apiStartDate <- as.Date("2021-01-01")
 
 azmetStationMetadata <- azmetr::station_info |>
   dplyr::mutate(end_date = NA) |> # Placeholder until inactive stations are in API and `azmetr`
@@ -48,6 +39,8 @@ azmetStationMetadata <- azmetr::station_info |>
       end_date
     )
   )
+
+apiStartDate <- min(azmetStationMetadata$start_date)
 
 # Identification and date variables
 dailyVarsID <- 

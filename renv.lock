@@ -101,7 +101,7 @@
       "RemoteUsername": "uace-azmet",
       "RemoteRepo": "azmetr",
       "RemoteRef": "main",
-      "RemoteSha": "041cd4ec5e83ed3f076d656bb7102955c33bfba6",
+      "RemoteSha": "2a7a53745b1ade817a69cdd6563336e71196e827",
       "Requirements": [
         "R",
         "attempt",
@@ -115,7 +115,7 @@
         "tibble",
         "tidyselect"
       ],
-      "Hash": "f41db81fede85edfd04acee220d1fd30"
+      "Hash": "8b94cf1e575aab509b5ed1466fcb3569"
     },
     "base64enc": {
       "Package": "base64enc",
