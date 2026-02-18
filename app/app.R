@@ -87,13 +87,22 @@ server <- function(input, output, session) {
   
   # Outputs -----
   
-  output$table <- renderTable({
-    dailyData()
-  })
-  
   output$pageBottomText <- shiny::renderUI({
     #shiny::req(dailyData())
     fxn_pageBottomText()
+  })
+  
+  output$reportingText <- shiny::renderUI({
+    shiny::req(dailyData())
+    htmltools::HTML(paste0("<br>", htmltools::span("Coming soon", style = "font-family: monospace;")))
+  })
+  
+  output$stationGroupsTable <- reactable::renderReactable({
+    stationGroupsTable
+  })
+  
+  output$table <- renderTable({
+    dailyData()
   })
   
   output$timeseriesGraph <- plotly::renderPlotly({
@@ -117,8 +126,9 @@ server <- function(input, output, session) {
     )
   })
   
-  output$stationGroupsTable <- reactable::renderReactable({
-    stationGroupsTable
+  output$validationText <- shiny::renderUI({
+    shiny::req(dailyData())
+    htmltools::HTML(paste0("<br>", htmltools::span("Coming soon", style = "font-family: monospace;")))
   })
 }
 
