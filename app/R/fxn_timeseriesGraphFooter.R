@@ -7,7 +7,7 @@ fxn_timeseriesGraphFooter <- function() {
   timeseriesGraphFooter <- 
     htmltools::p(
       htmltools::HTML(
-        "<strong>Time series graph:</strong> footer; <strong>Time series graph:</strong> footer"
+        ""
       ), 
       
       class = "timeseries-graph-footer"
