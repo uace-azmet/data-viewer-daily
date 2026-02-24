@@ -57,6 +57,12 @@ server <- function(input, output, session) {
       choices = c(dailyVarsMeasured, dailyVarsDerived),
       selected = c(dailyVarsMeasured, dailyVarsDerived)[1]
     )
+    
+    shiny::updateTabsetPanel(
+      session = shiny::getDefaultReactiveDomain(),
+      inputId = "navsetCardTab",
+      selected = "timeSeries"
+    )
   })
   
   
