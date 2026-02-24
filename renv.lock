@@ -41,17 +41,6 @@
       ],
       "Hash": "f6a81550f166acbe2cd5229e9ca079b9"
     },
-    "PKI": {
-      "Package": "PKI",
-      "Version": "0.1-15",
-      "Source": "Repository",
-      "Repository": "RSPM",
-      "Requirements": [
-        "R",
-        "base64enc"
-      ],
-      "Hash": "ec0620ffbe13af5d017a92077085965e"
-    },
     "R6": {
       "Package": "R6",
       "Version": "2.6.1",
@@ -83,17 +72,6 @@
       ],
       "Hash": "e7bdd9ee90e96921ca8a0f1972d66682"
     },
-    "RcppTOML": {
-      "Package": "RcppTOML",
-      "Version": "0.2.3",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "Rcpp"
-      ],
-      "Hash": "23eeca7d3c7d63fc7449108c0a66178c"
-    },
     "askpass": {
       "Package": "askpass",
       "Version": "1.2.1",
@@ -123,7 +101,7 @@
       "RemoteUsername": "uace-azmet",
       "RemoteRepo": "azmetr",
       "RemoteRef": "main",
-      "RemoteSha": "21f4b54f2b1d050fe75d191268274508d95071b6",
+      "RemoteSha": "5b6ec5a7d2e8343fa2a2793c009076e1e9d355b4",
       "Requirements": [
         "R",
         "attempt",
@@ -137,7 +115,7 @@
         "tibble",
         "tidyselect"
       ],
-      "Hash": "7a5ba1cf114f3ddf3bd4d12491ff787f"
+      "Hash": "2ccab1066ee9713c8e69a7db6607f7d5"
     },
     "base64enc": {
       "Package": "base64enc",
@@ -557,17 +535,6 @@
       ],
       "Hash": "0080607b4a1a7b28979aecef976d8bc2"
     },
-    "jose": {
-      "Package": "jose",
-      "Version": "1.2.1",
-      "Source": "Repository",
-      "Repository": "RSPM",
-      "Requirements": [
-        "jsonlite",
-        "openssl"
-      ],
-      "Hash": "cf5ae308441d505b8c7e4b08e0e510aa"
-    },
     "jquerylib": {
       "Package": "jquerylib",
       "Version": "0.1.4",
@@ -748,18 +715,6 @@
         "askpass"
       ],
       "Hash": "05ce1ed077e8c97fbb3ec1cb078f1159"
-    },
-    "packrat": {
-      "Package": "packrat",
-      "Version": "0.9.3",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "tools",
-        "utils"
-      ],
-      "Hash": "d3289899c84c65def1a783ea0a9ea0eb"
     },
     "pillar": {
       "Package": "pillar",
@@ -953,38 +908,6 @@
       ],
       "Hash": "df99277f63d01c34e95e3d2f06a79736"
     },
-    "rsconnect": {
-      "Package": "rsconnect",
-      "Version": "1.7.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "PKI",
-        "R",
-        "cli",
-        "curl",
-        "digest",
-        "jsonlite",
-        "lifecycle",
-        "openssl",
-        "packrat",
-        "renv",
-        "rlang",
-        "rstudioapi",
-        "snowflakeauth",
-        "tools",
-        "utils",
-        "yaml"
-      ],
-      "Hash": "bb44049707584498dc7fdae0963aa8a6"
-    },
-    "rstudioapi": {
-      "Package": "rstudioapi",
-      "Version": "0.18.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "d6e1ecf8e39b6d53c8acde372b2f92d1"
-    },
     "sass": {
       "Package": "sass",
       "Version": "0.4.10",
@@ -1063,22 +986,6 @@
         "shiny"
       ],
       "Hash": "802e4786b353a4bb27116957558548d5"
-    },
-    "snowflakeauth": {
-      "Package": "snowflakeauth",
-      "Version": "0.2.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "RcppTOML",
-        "cli",
-        "curl",
-        "jose",
-        "jsonlite",
-        "openssl",
-        "rlang"
-      ],
-      "Hash": "92d609625659f49f064819f4c9c4b773"
     },
     "sourcetools": {
       "Package": "sourcetools",
