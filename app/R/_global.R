@@ -42,6 +42,8 @@ azmetStationMetadata <- azmetr::station_info |>
 
 apiStartDate <- min(azmetStationMetadata$start_date)
 
+showNavsetCardTab <- reactiveVal(FALSE)
+
 # Identification and date variables
 dailyVarsID <- 
   c(
