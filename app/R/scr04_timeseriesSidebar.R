@@ -23,10 +23,8 @@ timeseriesSidebar <-
       # Visible elements
       
       htmltools::p(
-        bsicons::bs_icon("sliders"), 
-        htmltools::HTML("&nbsp;"), 
-        "DATA DISPLAY",
-        htmltools::HTML("&nbsp;&nbsp;&nbsp;&nbsp;"),
+        bsicons::bs_icon("sliders", class = "bolder-icon"), 
+        htmltools::HTML("&nbsp;<strong>DATA DISPLAY</strong>&nbsp;"),
         bslib::tooltip(
           bsicons::bs_icon("info-circle"),
           "Specify a station group to highlight and variable to show in the graph.",
@@ -53,9 +51,7 @@ timeseriesSidebar <-
       
       htmltools::p(
         bsicons::bs_icon("layers"), 
-        htmltools::HTML("&nbsp;"), 
-        "STATION GROUPS",
-        htmltools::HTML("&nbsp;&nbsp;&nbsp;&nbsp;"),
+        htmltools::HTML("&nbsp;<strong>STATION GROUPS</strong>&nbsp;"),
         bslib::tooltip(
           bsicons::bs_icon("info-circle"),
           "Stations are grouped by general proximity, as listed below. Scroll or swipe over the table to view additional columns.",

@@ -25,11 +25,8 @@ pageSidebar <-
       htmltools::p(
         htmltools::HTML(
           paste0(
-            bsicons::bs_icon("calendar-event"), 
-            htmltools::HTML("&nbsp;"),
-            htmltools::HTML("&nbsp;"),
-            toupper("DATE SELECTION"),
-            htmltools::HTML("&nbsp;&nbsp;&nbsp;&nbsp;"),
+            bsicons::bs_icon("calendar-event", class = "bolder-icon"), 
+            htmltools::HTML("&nbsp;&nbsp;&nbsp;<strong>DATE SELECTION</strong>&nbsp;"),
             bslib::tooltip(
               bsicons::bs_icon("info-circle"),
               "Set start and end dates of the period of interest. Then, click or tap 'RETRIEVE DAILY DATA'.",

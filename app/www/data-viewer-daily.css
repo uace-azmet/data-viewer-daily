@@ -26,9 +26,22 @@
   padding-right: 24px !important;
 }*/
 
+.bolder-icon {
+  stroke-width: 0.5;
+  stroke: currentColor; /* Inherits the 'color' property of the parent */
+}
+
 /* https://stackoverflow.com/questions/77114751/is-it-possible-to-modify-the-arrow-that-collapses-the-sidebar */
 .bslib-sidebar-layout > .collapse-toggle > .collapse-icon {
   fill: #989898 !important;
+}
+
+.bslib-sidebar-layout > .collapse-toggle:hover {
+  background-color: #f8f8f8 !important;
+}
+
+.bslib-sidebar-layout > .collapse-toggle:hover > .collapse-icon {
+  fill: #191919 !important;
 }
 
 .bslib-sidebar-layout.bslib-mb-spacing.html-fill-item {

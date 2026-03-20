@@ -18,7 +18,7 @@ ui <-
       
       bslib::layout_sidebar(
         sidebar = pageSidebar, # `scr##_slsSidebar.R`
-        navsetCardTab
+        shiny::uiOutput(outputId = "navsetCardTab")
       ),
       
       shiny::htmlOutput(outputId = "pageBottomText") # Common, regardless of card tab
@@ -30,7 +30,7 @@ ui <-
 
 server <- function(input, output, session) {
   shinyjs::useShinyjs(html = TRUE)
-  shinyjs::hideElement("pageBottomText")
+  shinyjs::hideElement(id = "pageBottomText")
   
   
   # Observables -----
@@ -42,7 +42,8 @@ server <- function(input, output, session) {
   })
   
   shiny::observeEvent(dailyData(), {
-    shinyjs::showElement("pageBottomText")
+    shinyjs::showElement(id = "pageBottomText")
+    showNavsetCardTab(TRUE)
     
     shiny::updateSelectInput(
       inputId = "stationGroup",
@@ -92,6 +93,11 @@ server <- function(input, output, session) {
   
   
   # Outputs -----
+  
+  output$navsetCardTab <- shiny::renderUI({
+    shiny::req(showNavsetCardTab())
+    navsetCardTab # `scr##_navsetCardTab.R`
+  })
   
   output$pageBottomText <- shiny::renderUI({
     #shiny::req(dailyData())
