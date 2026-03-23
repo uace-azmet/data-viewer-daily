@@ -141,7 +141,7 @@ fxn_timeseriesGraph <- function(inData, stationGroup, stationVariable) {
         title = list(
           font = list(size = 14),
           standoff = 25,
-          text = "Date"
+          text = "<b>Date</b>"
         ),
         zeroline = FALSE
       ),
@@ -149,7 +149,7 @@ fxn_timeseriesGraph <- function(inData, stationGroup, stationVariable) {
         title = list(
           font = list(size = 14),
           standoff = 25,
-          text = stationVariable
+          text = ~paste0("<b>", stationVariable, "</b>")
         ),
         zeroline = FALSE
       )
