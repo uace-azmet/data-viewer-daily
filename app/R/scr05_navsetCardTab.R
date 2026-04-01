@@ -1,39 +1,40 @@
-navsetCardTab <- bslib::navset_card_tab(
-  id = "navsetCardTab",
-  selected = "reporting",
-  title = NULL,
-  sidebar = NULL,
-  header = NULL,
-  footer = NULL,
-  height = 700,
-  full_screen = TRUE,
-  #wrapper = card_body,
-  
-  bslib::nav_panel(
-    title = "Reporting",
-    value = "reporting",
-    shiny::htmlOutput(outputId = "reportingText")
-  ),
-  
-  bslib::nav_panel(
-    title = "Time Series",
-    value = "timeSeries",
+navsetCardTab <- 
+  bslib::navset_card_tab(
+    id = "navsetCardTab",
+    selected = "reporting",
+    title = NULL,
+    sidebar = NULL,
+    header = NULL,
+    footer = NULL,
+    height = 700,
+    full_screen = TRUE,
+    #wrapper = card_body,
     
-    bslib::layout_sidebar(
-      sidebar = timeseriesSidebar, # `scr##_timeseriesSidebar.R`
+    bslib::nav_panel(
+      title = "Reporting",
+      value = "reporting",
+      shiny::htmlOutput(outputId = "reportingText")
+    ),
+    
+    bslib::nav_panel(
+      title = "Time Series",
+      value = "timeSeries",
       
-      shiny::htmlOutput(outputId = "timeseriesGraphTitle"),
-      plotly::plotlyOutput("timeseriesGraph"),
-      shiny::htmlOutput(outputId = "timeseriesGraphFooter")
+      bslib::layout_sidebar(
+        sidebar = timeseriesSidebar, # `scr##_timeseriesSidebar.R`
+        
+        shiny::htmlOutput(outputId = "timeseriesGraphTitle"),
+        plotly::plotlyOutput("timeseriesGraph"),
+        shiny::htmlOutput(outputId = "timeseriesGraphFooter")
+      )
+    ),
+    
+    bslib::nav_panel(
+      title = "Validation",
+      value = "validation",
+      shiny::htmlOutput(outputId = "validationText")
     )
-  ),
-  
-  bslib::nav_panel(
-    title = "Validation",
-    value = "validation",
-    shiny::htmlOutput(outputId = "validationText")
-  )
-) |>
+  ) |>
   htmltools::tagAppendAttributes(
     #https://getbootstrap.com/docs/5.0/utilities/api/
     class = "border-0 rounded-0 shadow-none"

@@ -11,8 +11,8 @@ library(plotly)
 library(reactable)
 library(shiny)
 library(shinyjs)
-library(vroom)
 library(tibble)
+library(vroom)
 
 
 # Files --------------------
@@ -41,8 +41,6 @@ azmetStationMetadata <- azmetr::station_info |>
   )
 
 apiStartDate <- min(azmetStationMetadata$start_date)
-
-showNavsetCardTab <- reactiveVal(FALSE)
 
 # Identification and date variables
 dailyVarsID <- 
@@ -135,7 +133,8 @@ dailyVarsDerived <-
     "wind_vector_magnitude_mph"
   )
 
-# selectedTab <- shiny::reactiveVal(value = "Time Series")
+showNavsetCardTab <- reactiveVal(FALSE)
+showPageBottomText <- reactiveVal(FALSE)
 
 stationGroups <-
   tibble::tibble(
