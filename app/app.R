@@ -77,6 +77,14 @@ server <- function(input, output, session) {
     )
   })
   
+  timeseriesGraphTitle <- 
+    shiny::eventReactive(dailyData(), {
+      fxn_timeseriesGraphTitle(
+        startDate = input$startDate,
+        endDate = input$endDate
+      )
+    })
+  
   
   # Outputs -----
   
@@ -116,13 +124,10 @@ server <- function(input, output, session) {
     fxn_timeseriesGraphFooter()
   })
   
-  output$timeseriesGraphTitle <- shiny::renderUI({
-    shiny::req(dailyData())
-    fxn_timeseriesGraphTitle(
-      startDate = input$startDate,
-      endDate = input$endDate
-    )
-  })
+  output$timeseriesGraphTitle <- 
+    shiny::renderUI({
+      timeseriesGraphTitle()
+    })
   
   output$validationText <- shiny::renderUI({
     shiny::req(dailyData())
