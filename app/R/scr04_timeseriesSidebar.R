@@ -20,7 +20,8 @@ timeseriesSidebar <-
       width = "auto",
       height = "auto",
       
-      # Visible elements
+      
+      # Visible elements -----
       
       htmltools::p(
         bsicons::bs_icon("sliders", class = "bolder-icon"), 

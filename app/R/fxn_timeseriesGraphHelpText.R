@@ -4,6 +4,7 @@
 
 
 fxn_timeseriesGraphHelpText <- function() {
+  
   timeseriesGraphHelpText <- 
     htmltools::p(
       htmltools::HTML(

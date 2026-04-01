@@ -20,7 +20,8 @@ pageSidebar <-
       width = "auto",
       height = "auto",
       
-      # Visible elements
+      
+      # Visible elements -----
       
       htmltools::p(
         htmltools::HTML(
@@ -65,7 +66,6 @@ pageSidebar <-
         autoclose = TRUE
       ),
       
-      #selectInput("dataset", label = "Dataset", choices = ls("package:datasets")),
       shiny::actionButton(
         inputId = "retrieveDailyData",
         label = "RETRIEVE DAILY DATA",

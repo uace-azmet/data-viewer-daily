@@ -4,6 +4,7 @@
 
 
 fxn_timeseriesGraphFooter <- function() {
+  
   timeseriesGraphFooter <- 
     htmltools::p(
       htmltools::HTML(
