@@ -45,20 +45,6 @@ server <- function(input, output, session) {
     shinyjs::showElement(id = "pageBottomText")
     showNavsetCardTab(TRUE)
     
-    shiny::updateSelectInput(
-      inputId = "stationGroup",
-      label = "Station Group",
-      choices = sort(unique(dailyData()$meta_station_group)),
-      selected = sort(unique(dailyData()$meta_station_group))[1]
-    )
-    
-    shiny::updateSelectInput(
-      inputId = "stationVariable",
-      label = "Station Variable",
-      choices = c(dailyVarsMeasured, dailyVarsDerived),
-      selected = c(dailyVarsMeasured, dailyVarsDerived)[1]
-    )
-    
     shiny::updateTabsetPanel(
       session = shiny::getDefaultReactiveDomain(),
       inputId = "navsetCardTab",
