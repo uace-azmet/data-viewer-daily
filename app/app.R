@@ -1,34 +1,34 @@
 # Tabular and graphical summaries of daily data to support QA/QC
 
-# Add code for the following
-# 
-# 'azmet-shiny-template.html': <!-- Google tag (gtag.js) -->
-
 
 # UI --------------------
+
 
 ui <- 
   htmltools::htmlTemplate(
     "azmet-shiny-template.html",
     
-    pageDataViewerDaily = bslib::page(
-      title = NULL,
-      theme = theme, # `scr##_theme.R`
-      #lang = "en",
-      
-      bslib::layout_sidebar(
-        sidebar = pageSidebar, # `scr##_slsSidebar.R`
-        shiny::uiOutput(outputId = "navsetCardTab")
-      ),
+    pageDataViewerDaily = 
+      bslib::page(
+        title = NULL,
+        theme = theme, # `scr##_theme.R`
+        #lang = "en",
+        
+        bslib::layout_sidebar(
+          sidebar = pageSidebar, # `scr##_slsSidebar.R`
+          shiny::uiOutput(outputId = "navsetCardTab")
+        ),
       
       shiny::htmlOutput(outputId = "pageBottomText") # Common, regardless of card tab
-    )
+      )
   )
 
 
 # Server --------------------
 
+
 server <- function(input, output, session) {
+  
   shinyjs::useShinyjs(html = TRUE)
   shinyjs::hideElement(id = "pageBottomText")
   
@@ -37,7 +37,7 @@ server <- function(input, output, session) {
   
   shiny::observeEvent(input$retrieveDailyData, {
     if (input$startDate > input$endDate) {
-      shiny::showModal(datepickerErrorModal) # `scr06_datepickerErrorModal.R`
+      shiny::showModal(datepickerErrorModal) # `scr##_datepickerErrorModal.R`
     }
   })
   
@@ -55,27 +55,29 @@ server <- function(input, output, session) {
   
   # Reactives -----
   
-  dailyData <- shiny::eventReactive(input$retrieveDailyData, {
-    idRetrievingDailyData <- shiny::showNotification(
-      ui = "Retrieving daily data . . .",
-      action = NULL,
-      duration = NULL,
-      closeButton = FALSE,
-      id = "idRetrievingDailyData",
-      type = "message"
-    )
-    
-    on.exit(
-      shiny::removeNotification(id = idRetrievingDailyData), 
-      add = TRUE
-    )
-    
-    fxn_dailyData(
-      azmetStation = NULL,
-      startDate = input$startDate,
-      endDate = input$endDate
-    )
-  })
+  dailyData <- 
+    shiny::eventReactive(input$retrieveDailyData, {
+      idRetrievingDailyData <- 
+        shiny::showNotification(
+          ui = "Retrieving daily data . . .",
+          action = NULL,
+          duration = NULL,
+          closeButton = FALSE,
+          id = "idRetrievingDailyData",
+          type = "message"
+        )
+      
+      on.exit(
+        shiny::removeNotification(id = idRetrievingDailyData), 
+        add = TRUE
+      )
+      
+      fxn_dailyData(
+        azmetStation = NULL,
+        startDate = input$startDate,
+        endDate = input$endDate
+      )
+    })
   
   timeseriesGraphTitle <- 
     shiny::eventReactive(dailyData(), {
@@ -88,54 +90,71 @@ server <- function(input, output, session) {
   
   # Outputs -----
   
-  output$navsetCardTab <- shiny::renderUI({
-    shiny::req(showNavsetCardTab())
-    navsetCardTab # `scr##_navsetCardTab.R`
-  })
+  output$navsetCardTab <- 
+    shiny::renderUI({
+      shiny::req(showNavsetCardTab())
+      navsetCardTab # `scr##_navsetCardTab.R`
+    })
   
-  output$pageBottomText <- shiny::renderUI({
-    #shiny::req(dailyData())
-    fxn_pageBottomText()
-  })
+  output$pageBottomText <- 
+    shiny::renderUI({
+      #shiny::req(dailyData())
+      fxn_pageBottomText()
+    })
   
-  output$reportingText <- shiny::renderUI({
-    shiny::req(dailyData())
-    htmltools::HTML(paste0("<br>", htmltools::span("Coming soon", style = "font-family: monospace;")))
-  })
+  output$reportingText <- 
+    shiny::renderUI({
+      shiny::req(dailyData())
+      htmltools::HTML(
+        paste0(
+          "<br>", htmltools::span("Coming soon", style = "font-family: monospace;")
+        )
+      )
+    })
   
-  output$stationGroupsTable <- reactable::renderReactable({
-    stationGroupsTable
-  })
+  output$stationGroupsTable <- 
+    reactable::renderReactable({
+      stationGroupsTable
+    })
   
-  output$table <- renderTable({
-    dailyData()
-  })
+  output$table <- 
+    renderTable({
+      dailyData()
+    })
   
-  output$timeseriesGraph <- plotly::renderPlotly({
-    fxn_timeseriesGraph(
-      inData = dailyData(),
-      stationGroup = input$stationGroup,
-      stationVariable = input$stationVariable
-    )
-  })
+  output$timeseriesGraph <- 
+    plotly::renderPlotly({
+      fxn_timeseriesGraph(
+        inData = dailyData(),
+        stationGroup = input$stationGroup,
+        stationVariable = input$stationVariable
+      )
+    })
   
-  output$timeseriesGraphFooter <- shiny::renderUI({
-    shiny::req(dailyData())
-    fxn_timeseriesGraphFooter()
-  })
+  output$timeseriesGraphFooter <- 
+    shiny::renderUI({
+      shiny::req(dailyData())
+      fxn_timeseriesGraphFooter()
+    })
   
   output$timeseriesGraphTitle <- 
     shiny::renderUI({
       timeseriesGraphTitle()
     })
   
-  output$validationText <- shiny::renderUI({
-    shiny::req(dailyData())
-    htmltools::HTML(paste0("<br>", htmltools::span("Coming soon", style = "font-family: monospace;")))
-  })
+  output$validationText <- 
+    shiny::renderUI({
+      shiny::req(dailyData())
+      htmltools::HTML(
+        paste0(
+          "<br>", htmltools::span("Coming soon", style = "font-family: monospace;")
+        )
+      )
+    })
 }
 
 
 # Run --------------------
+
 
 shinyApp(ui = ui, server = server)
