@@ -42,8 +42,10 @@ server <- function(input, output, session) {
   })
   
   shiny::observeEvent(dailyData(), {
+    shinyjs::showElement(id = "navsetCardTab")
     shinyjs::showElement(id = "pageBottomText")
     showNavsetCardTab(TRUE)
+    showPageBottomText(TRUE)
     
     shiny::updateTabsetPanel(
       session = shiny::getDefaultReactiveDomain(),
@@ -57,6 +59,13 @@ server <- function(input, output, session) {
   
   dailyData <- 
     shiny::eventReactive(input$retrieveDailyData, {
+      shiny::validate(
+        shiny::need(
+          expr = input$startDate <= input$endDate,
+          message = FALSE # Failing validation test
+        )
+      )
+      
       idRetrievingDailyData <- 
         shiny::showNotification(
           ui = "Retrieving daily data . . .",
