@@ -68,7 +68,7 @@ fxn_pageBottomText <- function() {
     htmltools::p(
       htmltools::HTML(
         paste0(
-          "AZMet daily data are from ", apiURL, " and accessed using the ", azmetrURL, " R package. Table values are based on provisional data. More information about ", webpageDataVariables, ", ", webpageNetworkMap, ", and ", webpageStationMetadata, " is available on the ", webpageAZMet, ". Users of AZMet data and related information assume all risks of its use.",
+          "AZMet daily data are from ", apiURL, " and accessed using the ", azmetrURL, " R package. Values from recent dates may be based on provisional data. More information about ", webpageDataVariables, ", ", webpageNetworkMap, ", and ", webpageStationMetadata, " is available on the ", webpageAZMet, ". Users of AZMet data and related information assume all risks of its use.",
           htmltools::br(), htmltools::br(),
           "To cite the above AZMet data, please use: 'Arizona Meteorological Network (", todayYear, ") Arizona Meteorological Network (AZMet) Data. https:://azmet.arizona.edu. Accessed ", todayDate, "', along with 'Arizona Meteorological Network (", todayYear, ") Data Viewer: Daily. https://viz.datascience.arizona.edu/azmet/data-viewer-daily. Accessed ", todayDate, "'.",
           htmltools::br(), htmltools::br(),
