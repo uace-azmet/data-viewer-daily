@@ -139,10 +139,10 @@ showPageBottomText <- shiny::reactiveVal(FALSE)
 
 stationGroups <-
   tibble::tibble(
-    group1 = c("Ft Mohave CA", "Mohave", "Mohave ETo", "Mohave-2", "Parker", "Parker-2"),
-    group2 = c("Roll", "Wellton ETo", "Yuma N.Gila", "Yuma South", "Yuma Valley", "Yuma Valley ETo"),
-    group3 = c("Aguila", "Buckeye", "Harquahala", "Maricopa", "Paloma", "Salome"),
-    group4 = c("Chino Valley", "Desert Ridge", "Payson", "Phoenix Encanto", "Phoenix Greenway", NA),
-    group5 = c("Coolidge", "Elgin", "Queen Creek", "Sahuarita", "Test", "Tucson"),
-    group6 = c("Bonita", "Bowie", "Duncan", "Safford", "San Simon", "Willcox Bench")
+    group1 = c("Ft Mohave CA", "Mohave", "Mohave ETo", "Mohave-2", "Parker", "Parker-2", NA),
+    group2 = c("Roll", "Wellton ETo", "Yuma N.Gila", "Yuma South", "Yuma Valley", "Yuma Valley ETo", NA),
+    group3 = c("Aguila", "Buckeye", "Harquahala", "Maricopa", "Paloma", "Salome", NA),
+    group4 = c("Chino Valley", "Desert Ridge", "Payson", "Phoenix Encanto", "Phoenix Greenway", NA, NA),
+    group5 = c("Coolidge", "Elgin", "Eloy", "Queen Creek", "Sahuarita", "Test", "Tucson"),
+    group6 = c("Bonita", "Bowie", "Duncan", "Safford", "San Simon", "Willcox Bench", NA)
   )
